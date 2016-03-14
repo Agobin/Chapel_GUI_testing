@@ -2,6 +2,16 @@
 #include <gtk/gtk.h>
 #include "gtk_gui.h"
 
+//This function enables the destruction of a widget upon emission of a destroy signal
+static void destroy( GtkWidget * window , gpointer data){
+	gtk_main_quit();
+}
+
+//This function enables the destruction of a widget upon emission of a destroy event
+static gboolean delete_event( GtkWidget *window, GdkEvent *event, gpointer data){
+	return FALSE;
+}
+
 //This function interfaces gtk_init() in chapel. It initialises gtk components to their default value
 void chpl_init(int *argc, const char **argv){
 
@@ -19,26 +29,8 @@ GtkWidget * chpl_window_new( const char * title, int width, int height){
 	return window;
 }
 
-//This function sets the visibility of a widget to true
-void chpl_show_widget(GtkWidget *object){
-	gtk_widget_show(object);
-}
+void link_close_signal(GtkWidget **window){
 
-//This function sets the visibility of all widgets in a container to true
-void chpl_show_all_widget(GtkWidget *object){
-	gtk_widget_show_all(object);
-}
-
-//This function calls gtk_main() which indicates the end of run of a gtk program
-void chpl_main(){
-	gtk_main();
-}
-
-//This function closes a window when its destroy signal is emitted
-void chpl_main_quit(){
-	gtk_main_quit();
-}
-
-void link_close_signal(GtkWidget *window){
-   g_signal_connect(window, "destroy", G_CALLBACK(gtk_widget_destroy), window);
+  g_signal_connect( G_OBJECT(*window), "destroy", G_CALLBACK(destroy), NULL);
+  g_signal_connect( G_OBJECT(*window), "delete_event", G_CALLBACK(delete_event), NULL);
 }
