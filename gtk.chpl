@@ -55,7 +55,7 @@ proc showDialog( title: c_string, message: c_string, wid: c_int = 50, h: c_int =
 }
 
 //This function initialises gtk components
-proc initialise(args: [] string): void{
+proc gtk_init(args: [] string): void{
   var argc: c_int = 1;
   var cStr: c_string = args[0];
   chpl_init(argc, cStr);
