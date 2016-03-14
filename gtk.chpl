@@ -18,7 +18,7 @@ extern proc chpl_init(ref argc: c_int, ref argv: c_string) : void;
 extern proc chpl_window_new( title: c_string,  width: c_int, height: c_int) : c_ptr(GtkWidget);
 
 //This function sets the visibility of a widget to true
-extern proc gtk_widget_show( ref object: GtkWidget): void;
+extern proc gtk_widget_show( object: c_ptr(GtkWidget)): void;
 
 //This function sets the visibility of all widgets in a container to true
 extern proc gtk_widget_show_all( object: c_ptr(GtkWidget)): void;
@@ -38,20 +38,24 @@ extern proc gtk_container_add( wid: c_ptr(GtkContainer), child: c_ptr(GtkWidget)
 //This function links a widget to a callback function
 extern proc link_close_signal(ref window: c_ptr(GtkWidget)) :void;
 
+//This function hides a window
+extern proc link_hide_signal(ref window: c_ptr(GtkWidget)) :void;
+
 
 //This section downwards involves definition of new functions
 
 
 //This function shows a dialog
-proc showDialog( title: c_string, message: c_string, wid: c_int = 50, h: c_int = 30){
+proc showDialog( title: c_string = "Title", message: c_string = "", wid: c_int = 300, h: c_int = 100){
   var window: c_ptr(GtkWidget);
   var lab: c_ptr(GtkWidget);
 
   lab = gtk_label_new(message);
   window = chpl_window_new(title, wid, h);
   gtk_container_add(GTK_CONTAINER(window), lab);
-  link_close_signal(window);
+  link_hide_signal(window);
   gtk_widget_show_all(window);
+
 }
 
 //This function initialises gtk components

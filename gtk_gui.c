@@ -34,3 +34,7 @@ void link_close_signal(GtkWidget **window){
   g_signal_connect( G_OBJECT(*window), "destroy", G_CALLBACK(destroy), NULL);
   g_signal_connect( G_OBJECT(*window), "delete_event", G_CALLBACK(delete_event), NULL);
 }
+
+void link_hide_signal(GtkWidget **window){
+  gtk_widget_hide(*window);
+}

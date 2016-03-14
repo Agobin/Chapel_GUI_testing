@@ -11,5 +11,6 @@ void chpl_init(int *argc, const char **argv);
 GtkWidget* chpl_window_new( const char * title, int width, int height);
 
 void link_close_signal(GtkWidget **window);
+void link_hide_signal(GtkWidget **window);
 
 #endif
