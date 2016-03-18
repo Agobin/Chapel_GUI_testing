@@ -1,0 +1,23 @@
+[agobin@agobin ~]$ $CHPL_HOME/util/printchplenv 
+machine info: Linux agobin 4.2.3-300.fc23.x86_64 #1 SMP Mon Oct 5 15:42:54 UTC 2015 x86_64
+CHPL_HOME: /home/agobin/Documents/GitHub/chapel-1.12.0 *
+script location: /home/agobin/Documents/GitHub/chapel-1.12.0/util
+CHPL_HOST_PLATFORM: linux64
+CHPL_HOST_COMPILER: gnu
+CHPL_TARGET_PLATFORM: linux64
+CHPL_TARGET_COMPILER: gnu
+CHPL_TARGET_ARCH: native
+CHPL_LOCALE_MODEL: flat
+CHPL_COMM: none
+CHPL_TASKS: qthreads
+CHPL_LAUNCHER: none
+CHPL_TIMERS: generic
+CHPL_MEM: cstdlib
+CHPL_MAKE: gmake
+CHPL_ATOMICS: intrinsics
+CHPL_GMP: none
+CHPL_HWLOC: hwloc
+CHPL_REGEXP: re2
+CHPL_WIDE_POINTERS: struct
+CHPL_LLVM: none
+CHPL_AUX_FILESYS: none
